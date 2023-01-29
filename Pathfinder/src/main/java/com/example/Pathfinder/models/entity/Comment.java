@@ -20,7 +20,10 @@ public class Comment extends BaseEntity{
     @Column(columnDefinition = "TEXT", name = "text_content")
     private String text; //- Accepts very long text values+
 
+    @ManyToOne
     private User author; //- Accepts User Entities as values
+
+    @ManyToOne
     private Route route; //- Accepts Route Entities as value
 
     public Comment() {
@@ -53,7 +56,6 @@ public class Comment extends BaseEntity{
         return this;
     }
 
-    @ManyToOne
     public User getAuthor() {
         return author;
     }
@@ -63,7 +65,6 @@ public class Comment extends BaseEntity{
         return this;
     }
 
-    @ManyToOne
     public Route getRoute() {
         return route;
     }

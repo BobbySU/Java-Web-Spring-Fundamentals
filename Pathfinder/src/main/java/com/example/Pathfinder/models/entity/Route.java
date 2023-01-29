@@ -21,13 +21,24 @@ public class Route extends BaseEntity{
     @Column
     private String name ; //- Accepts String values
 
+    @ManyToOne
     private User author; // - Accepts User Entities as values
 
     @Column
     private String video_url; // – Accepts the ids of youtube videos as values
 
+    @OneToMany(targetEntity = Comment.class,
+            mappedBy = "route",
+            cascade = {CascadeType.MERGE, CascadeType.DETACH})
     private Set<Comment> comments;
+
+    @OneToMany(targetEntity = Picture.class,
+            mappedBy = "route",
+            fetch = FetchType.EAGER,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE})
     private Set<Picture> pictures;
+
+    @ManyToMany
     private Set<Category> categories;
 
     public Route() {
@@ -69,7 +80,6 @@ public class Route extends BaseEntity{
         return this;
     }
 
-    @ManyToOne
     public User getAuthor() {
         return author;
     }
@@ -88,9 +98,6 @@ public class Route extends BaseEntity{
         return this;
     }
 
-    @OneToMany(targetEntity = Comment.class,
-            mappedBy = "route",
-            cascade = {CascadeType.MERGE, CascadeType.DETACH})
     public Set<Comment> getComments() {
         return comments;
     }
@@ -100,10 +107,6 @@ public class Route extends BaseEntity{
         return this;
     }
 
-    @OneToMany(targetEntity = Picture.class,
-            mappedBy = "route",
-            fetch = FetchType.EAGER,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE})
     public Set<Picture> getPictures() {
         return pictures;
     }
@@ -113,7 +116,6 @@ public class Route extends BaseEntity{
         return this;
     }
 
-    @ManyToMany
     public Set<Category> getCategories() {
         return categories;
     }

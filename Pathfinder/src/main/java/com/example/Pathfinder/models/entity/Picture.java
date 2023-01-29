@@ -15,7 +15,10 @@ public class Picture extends BaseEntity{
     @Column(columnDefinition = "TEXT")
     private  String url; // - Accepts very long String values
 
+    @ManyToOne
     private  User author; // - Accepts User Entities as values
+
+    @ManyToOne
     private  Route route; //- Accepts Route Entities as values
 
     public Picture() {
@@ -39,7 +42,6 @@ public class Picture extends BaseEntity{
         return this;
     }
 
-    @ManyToOne
     public User getAuthor() {
         return author;
     }
@@ -49,7 +51,6 @@ public class Picture extends BaseEntity{
         return this;
     }
 
-    @ManyToOne
     public Route getRoute() {
         return route;
     }

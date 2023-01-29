@@ -18,7 +18,10 @@ public class Message extends BaseEntity{
     @Column(name = "text_content")
     private String textContent; //Accepts very long String values
 
+    @ManyToOne
     private User author;  //Accepts User Entities as values
+
+    @ManyToOne
     private User recipient;  //Accepts User Entities as value
 
     public Message() {
@@ -51,7 +54,6 @@ public class Message extends BaseEntity{
         return this;
     }
 
-    @ManyToOne
     public User getAuthor() {
         return author;
     }
@@ -61,7 +63,6 @@ public class Message extends BaseEntity{
         return this;
     }
 
-    @ManyToOne
     public User getRecipient() {
         return recipient;
     }

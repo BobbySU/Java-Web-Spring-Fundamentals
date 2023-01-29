@@ -27,6 +27,7 @@ public class User extends BaseEntity{
     @Column(nullable = false)
     private String username;
 
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public User() {
@@ -86,7 +87,6 @@ public class User extends BaseEntity{
         return this;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Role> getRoles() {
         return roles;
     }
