@@ -7,23 +7,25 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "pictures")
-public class Pictures extends BaseEntity{
+public class Picture extends BaseEntity{
 
     @Column
     private  String title; //- Accepts String values
+
     @Column(columnDefinition = "TEXT")
     private  String url; // - Accepts very long String values
+
     private  User author; // - Accepts User Entities as values
     private  Route route; //- Accepts Route Entities as values
 
-    public Pictures() {
+    public Picture() {
     }
 
     public String getTitle() {
         return title;
     }
 
-    public Pictures setTitle(String title) {
+    public Picture setTitle(String title) {
         this.title = title;
         return this;
     }
@@ -32,7 +34,7 @@ public class Pictures extends BaseEntity{
         return url;
     }
 
-    public Pictures setUrl(String url) {
+    public Picture setUrl(String url) {
         this.url = url;
         return this;
     }
@@ -42,7 +44,7 @@ public class Pictures extends BaseEntity{
         return author;
     }
 
-    public Pictures setAuthor(User author) {
+    public Picture setAuthor(User author) {
         this.author = author;
         return this;
     }
@@ -52,7 +54,7 @@ public class Pictures extends BaseEntity{
         return route;
     }
 
-    public Pictures setRoute(Route route) {
+    public Picture setRoute(Route route) {
         this.route = route;
         return this;
     }

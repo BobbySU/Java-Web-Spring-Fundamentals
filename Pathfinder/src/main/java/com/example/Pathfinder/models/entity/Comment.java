@@ -5,38 +5,41 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "comments")
-public class Comments extends BaseEntity{
+public class Comment extends BaseEntity{
 
     @Column
     private Boolean approved; //- Accepts boolean values
+
     @Column
-    private LocalDate created; //- Accepts Date and Time values The values should not be future dates
+    private LocalDateTime created; //- Accepts Date and Time values The values should not be future dates
+
     @Column(columnDefinition = "TEXT", name = "text_content")
     private String text; //- Accepts very long text values+
+
     private User author; //- Accepts User Entities as values
     private Route route; //- Accepts Route Entities as value
 
-    public Comments() {
+    public Comment() {
     }
 
     public Boolean getApproved() {
         return approved;
     }
 
-    public Comments setApproved(Boolean approved) {
+    public Comment setApproved(Boolean approved) {
         this.approved = approved;
         return this;
     }
 
-    public LocalDate getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public Comments setCreated(LocalDate created) {
+    public Comment setCreated(LocalDateTime created) {
         this.created = created;
         return this;
     }
@@ -45,7 +48,7 @@ public class Comments extends BaseEntity{
         return text;
     }
 
-    public Comments setText(String text) {
+    public Comment setText(String text) {
         this.text = text;
         return this;
     }
@@ -55,7 +58,7 @@ public class Comments extends BaseEntity{
         return author;
     }
 
-    public Comments setAuthor(User author) {
+    public Comment setAuthor(User author) {
         this.author = author;
         return this;
     }
@@ -65,7 +68,7 @@ public class Comments extends BaseEntity{
         return route;
     }
 
-    public Comments setRoute(Route route) {
+    public Comment setRoute(Route route) {
         this.route = route;
         return this;
     }

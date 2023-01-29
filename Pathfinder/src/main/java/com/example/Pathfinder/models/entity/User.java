@@ -11,16 +11,22 @@ public class User extends BaseEntity{
 
     @Column
     private Integer age;
-    @Column(nullable = false)
+
+    @Column
     private String fullName;
+
     @Enumerated(EnumType.STRING)
     private Level level;
+
     @Column
     private String email;
+
     @Column(nullable = false)
     private String password;
-    @Column(unique = true, nullable = false)
+
+    @Column(nullable = false)
     private String username;
+
     private Set<Role> roles;
 
     public User() {

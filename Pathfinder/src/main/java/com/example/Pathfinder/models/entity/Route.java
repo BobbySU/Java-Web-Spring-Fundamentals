@@ -9,20 +9,26 @@ import java.util.Set;
 @Table(name = "routes")
 public class Route extends BaseEntity{
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
-    @Column(columnDefinition = "LONGTEXT", length = 3000)
-    private String gpx_coordinates; // - Accepts very long text values
+
+    @Column(name = "gpx_coordinates", columnDefinition = "LONGTEXT", length = 3000)
+    private String gpxCoordinates; // - Accepts very long text values
+
     @Enumerated(EnumType.STRING)
     private Level level; // - Accepts the levels of the routes (BEGINNER, INTERMEDIATE, ADVANCED) as values
+
     @Column
     private String name ; //- Accepts String values
+
     private User author; // - Accepts User Entities as values
+
     @Column
     private String video_url; // – Accepts the ids of youtube videos as values
-    private Set<Comments> comments;
-    private Set<Pictures> pictures;
-    private Set<Categories> categories;
+
+    private Set<Comment> comments;
+    private Set<Picture> pictures;
+    private Set<Category> categories;
 
     public Route() {
     }
@@ -36,12 +42,12 @@ public class Route extends BaseEntity{
         return this;
     }
 
-    public String getGpx_coordinates() {
-        return gpx_coordinates;
+    public String getGpxCoordinates() {
+        return gpxCoordinates;
     }
 
-    public Route setGpx_coordinates(String gpx_coordinates) {
-        this.gpx_coordinates = gpx_coordinates;
+    public Route setGpxCoordinates(String gpxCoordinates) {
+        this.gpxCoordinates = gpxCoordinates;
         return this;
     }
 
@@ -82,37 +88,37 @@ public class Route extends BaseEntity{
         return this;
     }
 
-    @OneToMany(targetEntity = Comments.class,
+    @OneToMany(targetEntity = Comment.class,
             mappedBy = "route",
             cascade = {CascadeType.MERGE, CascadeType.DETACH})
-    public Set<Comments> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
-    public Route setComments(Set<Comments> comments) {
+    public Route setComments(Set<Comment> comments) {
         this.comments = comments;
         return this;
     }
 
-    @OneToMany(targetEntity = Pictures.class,
+    @OneToMany(targetEntity = Picture.class,
             mappedBy = "route",
             fetch = FetchType.EAGER,
             cascade = {CascadeType.DETACH, CascadeType.MERGE})
-    public Set<Pictures> getPictures() {
+    public Set<Picture> getPictures() {
         return pictures;
     }
 
-    public Route setPictures(Set<Pictures> pictures) {
+    public Route setPictures(Set<Picture> pictures) {
         this.pictures = pictures;
         return this;
     }
 
     @ManyToMany
-    public Set<Categories> getCategories() {
+    public Set<Category> getCategories() {
         return categories;
     }
 
-    public Route setCategories(Set<Categories> categories) {
+    public Route setCategories(Set<Category> categories) {
         this.categories = categories;
         return this;
     }

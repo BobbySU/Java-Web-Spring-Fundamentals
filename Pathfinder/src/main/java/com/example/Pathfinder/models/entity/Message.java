@@ -12,23 +12,35 @@ import java.time.LocalDate;
 public class Message extends BaseEntity{
 
     @Column(name = "date_time")
-    private LocalDate dateTime;  //Accepts Date and Time values
-    @Column(columnDefinition = "TEXT", name = "text_content")
+    private String dateTime;
+//    private LocalDate dateTime;  //Accepts Date and Time values
+
+    @Column(name = "text_content")
     private String textContent; //Accepts very long String values
+
     private User author;  //Accepts User Entities as values
     private User recipient;  //Accepts User Entities as value
 
     public Message() {
     }
 
-    public LocalDate getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public Message setDateTime(LocalDate dateTime) {
+    public Message setDateTime(String dateTime) {
         this.dateTime = dateTime;
         return this;
     }
+
+    //    public LocalDate getDateTime() {
+//        return dateTime;
+//    }
+//
+//    public Message setDateTime(LocalDate dateTime) {
+//        this.dateTime = dateTime;
+//        return this;
+//    }
 
     public String getTextContent() {
         return textContent;

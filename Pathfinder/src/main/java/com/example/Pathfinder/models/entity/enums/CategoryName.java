@@ -1,6 +1,6 @@
 package com.example.Pathfinder.models.entity.enums;
 
-public enum CategoriesName {
+public enum CategoryName {
     PEDESTRIAN,
     BICYCLE,
     MOTORCYCLE,

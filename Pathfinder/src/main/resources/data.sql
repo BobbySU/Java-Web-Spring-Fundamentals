@@ -1,4 +1,5 @@
 -- https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
+use `pathfinder_db`;
 
 -- user roles
 INSERT INTO roles (id, role)
