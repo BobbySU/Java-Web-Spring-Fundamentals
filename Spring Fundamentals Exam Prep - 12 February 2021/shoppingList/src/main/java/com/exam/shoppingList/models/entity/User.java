@@ -8,16 +8,14 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User extends BaseEntity{
 
-    @Column(name = "username", unique = true, nullable = false)
     private String username;
-    @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     public User() {
     }
 
+    @Column(name = "username", unique = true, nullable = false)
     public String getUsername() {
         return username;
     }
@@ -27,6 +25,7 @@ public class User extends BaseEntity{
         return this;
     }
 
+    @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
     }
@@ -36,6 +35,7 @@ public class User extends BaseEntity{
         return this;
     }
 
+    @Column(name = "email", unique = true, nullable = false)
     public String getEmail() {
         return email;
     }
