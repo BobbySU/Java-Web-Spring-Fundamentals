@@ -1,4 +1,4 @@
-package com.example.Mobile.models.entity;
+package com.example.battleships.models.entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
