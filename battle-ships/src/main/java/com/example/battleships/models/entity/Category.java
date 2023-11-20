@@ -30,4 +30,13 @@ public class Category extends BaseEntity {
         this.description = description;
         return this;
     }
+    @Enumerated(EnumType.STRING)
+    public CategoryType getName() {
+        return name;
+    }
+
+    public Category setName(CategoryType name) {
+        this.name = name;
+        return this;
+    }
 }
