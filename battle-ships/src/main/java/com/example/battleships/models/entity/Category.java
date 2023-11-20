@@ -2,13 +2,13 @@ package com.example.battleships.models.entity;
 
 import com.example.battleships.models.entity.enums.CategoryType;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "categories")
 public class Category extends BaseEntity {
