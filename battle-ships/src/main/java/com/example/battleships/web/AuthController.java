@@ -1,5 +1,6 @@
 package com.example.battleships.web;
 
+import ch.qos.logback.core.model.Model;
 import com.example.battleships.models.dto.UserRegisterDTO;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AuthController {
 
     @GetMapping("/register")
-    public String getRegister(){
+    public String getRegister(Model model){
         return "register";
     }
 
@@ -27,6 +28,7 @@ public class AuthController {
             redirectAttributes.addFlashAttribute ("userRegisterDTO", userRegisterDTO)
                     .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDTO",
                             bindingResult);
+            return "redirect:register";
         }
 
         return "register";
