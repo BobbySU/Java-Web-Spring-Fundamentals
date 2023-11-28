@@ -1,8 +1,11 @@
 package com.example.battleships.web;
 
 import ch.qos.logback.core.model.Model;
+import com.example.battleships.models.dto.UserLoginDTO;
 import com.example.battleships.models.dto.UserRegisterDTO;
+import com.example.battleships.services.AuthService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +18,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/auth")
 public class AuthController {
 
+    private final AuthService authService;
+
+    @Autowired
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+
     @GetMapping("/register")
-    public String getRegister(Model model){
+    public String getRegister(){
         return "register";
     }
 
@@ -31,16 +41,37 @@ public class AuthController {
             return "redirect:register";
         }
 
-        return "register";
+        this.authService.registerUser(userRegisterDTO);
+
+        return "redirect:login";
     }
     @GetMapping("/login")
     public String getLogin(){
         return "login";
     }
 
+    @PostMapping("/login")
+    public String postLogin(@Valid @ModelAttribute(name = "userLoginDTO") UserLoginDTO userLoginDTO,
+                           BindingResult bindingResult,
+                           RedirectAttributes redirectAttributes){
+        if (bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute ("userLoginDTO", userLoginDTO)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginDTO",
+                            bindingResult);
+            return "redirect:login";
+        }
+        this.authService.loginUser(userLoginDTO);
+        return "redirect:/home";
+    }
+
     // Model attributes
     @ModelAttribute(name = "userRegisterDTO")
     public UserRegisterDTO userRegisterDTO(){
         return new UserRegisterDTO();
+    }
+
+    @ModelAttribute(name = "userLoginDTO")
+    public UserLoginDTO userLoginDTO(){
+        return new UserLoginDTO();
     }
 }
