@@ -1,6 +1,6 @@
 package com.example.battleships.config;
 
-import com.example.battleships.models.dto.LoggedUser;
+import com.example.battleships.models.dto.bilding.LoggedUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

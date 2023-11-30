@@ -1,6 +1,6 @@
-package com.example.battleships.models.dto;
+package com.example.battleships.models.dto.bilding;
 
-import com.example.battleships.validation.checkUserExistance.ValidateLoginForm;
+import com.example.battleships.validation.checkUserExistence.ValidateLoginForm;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

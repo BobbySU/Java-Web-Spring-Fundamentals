@@ -1,4 +1,4 @@
-package com.example.battleships.models.dto;
+package com.example.battleships.models.dto.bilding;
 
 import lombok.*;
 

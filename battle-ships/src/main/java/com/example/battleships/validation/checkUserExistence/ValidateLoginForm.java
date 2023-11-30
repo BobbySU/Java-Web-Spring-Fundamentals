@@ -1,4 +1,4 @@
-package com.example.battleships.validation.checkUserExistance;
+package com.example.battleships.validation.checkUserExistence;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

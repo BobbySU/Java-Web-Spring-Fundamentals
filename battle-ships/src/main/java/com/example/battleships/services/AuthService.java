@@ -1,8 +1,8 @@
 package com.example.battleships.services;
 
-import com.example.battleships.models.dto.LoggedUser;
-import com.example.battleships.models.dto.UserLoginDTO;
-import com.example.battleships.models.dto.UserRegisterDTO;
+import com.example.battleships.models.dto.bilding.LoggedUser;
+import com.example.battleships.models.dto.bilding.UserLoginDTO;
+import com.example.battleships.models.dto.bilding.UserRegisterDTO;
 import com.example.battleships.models.entity.User;
 import com.example.battleships.repository.UserRepository;
 import org.modelmapper.ModelMapper;

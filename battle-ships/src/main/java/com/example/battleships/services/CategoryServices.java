@@ -34,4 +34,8 @@ public class CategoryServices {
                     .toList());
         }
     }
+
+    public CategoryDTO findByName(CategoryType name){
+        return this.modelMapper.map(this.categoryRepository.findByName(name).orElseThrow(), CategoryDTO.class);
+    }
 }

@@ -19,4 +19,8 @@ public class UserService {
     public UserDTO findByUsername(String username){
         return this.modelMapper.map(this.userRepository.findByUsername(username).orElse(new User()), UserDTO.class);
     }
+
+    public UserDTO findById(String id){
+        return this.modelMapper.map(this.userRepository.findById(id).orElse(new User()), UserDTO.class);
+    }
 }

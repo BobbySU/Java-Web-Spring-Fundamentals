@@ -1,6 +1,6 @@
 package com.example.battleships.validation.passwordMatcher;
 
-import com.example.battleships.models.dto.UserRegisterDTO;
+import com.example.battleships.models.dto.bilding.UserRegisterDTO;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

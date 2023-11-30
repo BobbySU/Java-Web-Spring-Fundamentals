@@ -1,4 +1,4 @@
-package com.example.battleships.models.dto;
+package com.example.battleships.models.dto.bilding;
 
 import com.example.battleships.validation.passwordMatcher.PasswordMatch;
 import jakarta.validation.constraints.Email;

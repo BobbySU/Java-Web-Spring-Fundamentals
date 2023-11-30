@@ -1,8 +1,7 @@
-package com.example.battleships.validation.checkUserExistance;
+package com.example.battleships.validation.checkUserExistence;
 
 import com.example.battleships.models.dto.UserDTO;
-import com.example.battleships.models.dto.UserLoginDTO;
-import com.example.battleships.models.dto.UserRegisterDTO;
+import com.example.battleships.models.dto.bilding.UserLoginDTO;
 import com.example.battleships.services.UserService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

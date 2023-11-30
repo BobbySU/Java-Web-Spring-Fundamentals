@@ -1,8 +1,7 @@
 package com.example.battleships.web;
 
-import ch.qos.logback.core.model.Model;
-import com.example.battleships.models.dto.UserLoginDTO;
-import com.example.battleships.models.dto.UserRegisterDTO;
+import com.example.battleships.models.dto.bilding.UserLoginDTO;
+import com.example.battleships.models.dto.bilding.UserRegisterDTO;
 import com.example.battleships.services.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +60,14 @@ public class AuthController {
             return "redirect:login";
         }
         this.authService.loginUser(userLoginDTO);
+
         return "redirect:/home";
+    }
+
+    @GetMapping("/logout")
+    public String getLogout() {
+        this.authService.logoutUser();
+        return "redirect:/";
     }
 
     // Model attributes
