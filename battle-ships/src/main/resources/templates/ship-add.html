@@ -68,7 +68,7 @@
                                aria-describedby="createdHelpInline"
                                th:value="*{created}">
                         <small
-                                th:if="${#fields.hasErrors('*')}"
+                                th:if="${#fields.hasErrors('created')}"
                                id="createdTimeHelpInline" class="bg-danger text-light rounded">
                             Created date cannot be in the future.
                         </small>
