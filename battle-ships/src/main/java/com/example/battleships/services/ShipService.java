@@ -2,6 +2,7 @@ package com.example.battleships.services;
 
 import com.example.battleships.models.dto.CategoryDTO;
 import com.example.battleships.models.dto.ShipDTO;
+import com.example.battleships.models.dto.bilding.BattleShipsDTO;
 import com.example.battleships.models.dto.bilding.LoggedUser;
 import com.example.battleships.models.dto.bilding.ShipAddDTO;
 import com.example.battleships.models.dto.UserDTO;
@@ -49,5 +50,18 @@ public class ShipService {
     public List<ShipDTO> findAllByUserId(String id){
         return this.shipRepository.findAllByUserId(id).orElseThrow().stream()
                 .map(ship -> this.modelMapper.map(ship, ShipDTO.class)).toList();
+    }
+
+    public void fight(BattleShipsDTO battleShipsDTO) {
+        Ship loggedShip = this.shipRepository.findById(battleShipsDTO.getLoggedUserShip()).orElseThrow();
+        Ship notLoggedShip = this.shipRepository.findById(battleShipsDTO.getNotLoggedUserShip()).orElseThrow();
+
+        notLoggedShip.setHealth(notLoggedShip.getHealth() - loggedShip.getPower());
+
+        if (notLoggedShip.getHealth() <= 0) {
+            this.shipRepository.deleteById(battleShipsDTO.getNotLoggedUserShip());
+        } else {
+            this.shipRepository.saveAndFlush(notLoggedShip);
+        }
     }
 }

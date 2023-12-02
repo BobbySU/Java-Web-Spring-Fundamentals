@@ -1,6 +1,7 @@
 package com.example.battleships.web;
 
 import com.example.battleships.models.dto.ShipDTO;
+import com.example.battleships.models.dto.bilding.BattleShipsDTO;
 import com.example.battleships.models.dto.bilding.LoggedUser;
 import com.example.battleships.models.dto.bilding.UserWithShipsDTO;
 import com.example.battleships.models.entity.Ship;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,9 +52,19 @@ public class HomeController {
         return modelAndView;
     }
 
+    @PostMapping("battle")
+    public String getHome(@ModelAttribute(name = "battleShipsModel") BattleShipsDTO battleShipsModel) {
+        this.shipService.fight(battleShipsModel);
+        return "redirect:home";
+    }
     @GetMapping()
     public String getIndex() {
         return "index";
+    }
+
+    @ModelAttribute(name = "battleShipsModel")
+    public BattleShipsDTO battleShipsModel() {
+        return new BattleShipsDTO();
     }
 
     @ModelAttribute(name = "allShips")
