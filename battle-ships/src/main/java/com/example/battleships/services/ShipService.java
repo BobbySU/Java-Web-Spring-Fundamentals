@@ -8,7 +8,10 @@ import com.example.battleships.models.dto.UserDTO;
 import com.example.battleships.models.entity.Ship;
 import com.example.battleships.repository.ShipRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ShipService {
@@ -18,6 +21,7 @@ public class ShipService {
     private final UserService userService;
     private final CategoryServices categoryServices;
 
+    @Autowired
     public ShipService(ShipRepository shipRepository, ModelMapper modelMapper, LoggedUser loggedUser, UserService userService, CategoryServices categoryServices) {
         this.shipRepository = shipRepository;
         this.modelMapper = modelMapper;
@@ -40,5 +44,10 @@ public class ShipService {
                 .build(), Ship.class);
 
         this.shipRepository.saveAndFlush(ship);
+    }
+
+    public List<ShipDTO> findAllByUserId(String id){
+        return this.shipRepository.findAllByUserId(id).orElseThrow().stream()
+                .map(ship -> this.modelMapper.map(ship, ShipDTO.class)).toList();
     }
 }

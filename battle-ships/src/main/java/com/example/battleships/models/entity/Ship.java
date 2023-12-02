@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 @Setter
@@ -51,5 +52,10 @@ public class Ship extends BaseEntity {
     public Ship setUser(User user) {
         this.user = user;
         return this;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("| %s    | %s    | %s    |", name, health, power);
     }
 }
