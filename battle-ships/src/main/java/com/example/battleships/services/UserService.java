@@ -4,30 +4,22 @@ import com.example.battleships.models.dto.UserDTO;
 import com.example.battleships.models.dto.bilding.UserSeedDTO;
 import com.example.battleships.models.entity.User;
 import com.example.battleships.repository.UserRepository;
-import com.google.gson.Gson;
 import jakarta.annotation.PostConstruct;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Arrays;
-
-import static java.util.stream.Collectors.toList;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-    private final Gson gson;
 
     @Autowired
-    public UserService(UserRepository userRepository, ModelMapper modelMapper, Gson gson) {
+    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
-        this.gson = gson;
     }
 
     public UserDTO findByUsername(String username) {
